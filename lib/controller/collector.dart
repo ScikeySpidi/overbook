@@ -44,8 +44,8 @@ class DataController extends GetxController {
 
     for (var e = 0; e < dataList.length; e++) {
       // debugPrint("out");
-      if (dataList[e].date.years.toInt() == value &&
-          dataList[e].paperType.toString().toLowerCase() == type.toString()) {
+      if (dataList[e].date.years == value &&
+          dataList[e].paperType.toLowerCase() == type.toLowerCase()) {
         filteredPaper.add(dataList[e]);
       }
       // debugPrint('$e');
@@ -98,14 +98,8 @@ class DataController extends GetxController {
     // recentPaper.clear();
   }
 
-  Future<void> setRecent(value) async {
-    final PostsModel user = PostsModel(
-        id: value.id,
-        title: value.title,
-        date: value.date,
-        paperUrl: value.paperUrl,
-        paperType: value.paperType,
-        description: value.description);
+  Future<void> setRecent(PostsModel value) async {
+    final PostsModel user = value;
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     bool result = await prefs.setString('recent', jsonEncode(user));

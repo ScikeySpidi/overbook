@@ -44,7 +44,7 @@ class _PDFviewerState extends State<PDFviewer> {
       child: Scaffold(
           appBar: AppBar(
             title: Text(
-              widget.paperX.title.toString(),
+              widget.paperX.title,
               style: const TextStyle(color: Colors.black38),
             ),
             backgroundColor: Colors.white,
